@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dj66hbghsx3ks"]
+[gd_scene load_steps=8 format=3 uid="uid://dj66hbghsx3ks"]
 
 [ext_resource type="Script" uid="uid://bwtxdlcjhjvx2" path="res://Script/1ScriptCharacter.gd" id="1_ikjy8"]
 [ext_resource type="Texture2D" uid="uid://c6onrfow7qv1p" path="res://icon.svg" id="2_bnkdj"]
+[ext_resource type="Texture2D" uid="uid://yvm1lrk7fm5h" path="res://Sprites/Temporary/Upper Cut.png" id="3_oedjp"]
+[ext_resource type="Texture2D" uid="uid://e5m8fdeogbaf" path="res://Sprites/Temporary/kick.png" id="4_g83ow"]
+[ext_resource type="Texture2D" uid="uid://c71df2imdmelj" path="res://Sprites/Temporary/punch.png" id="5_kxaqx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bnkdj"]
 
@@ -12,7 +15,31 @@ animations = [{
 "texture": ExtResource("2_bnkdj")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_oedjp")
+}],
+"loop": true,
+"name": &"Upper Cut",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_g83ow")
+}],
+"loop": true,
+"name": &"low kick",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_kxaqx")
+}],
+"loop": true,
+"name": &"normal punch",
 "speed": 5.0
 }]
 
@@ -27,6 +54,7 @@ shape = SubResource("CapsuleShape2D_bnkdj")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 position = Vector2(64, 63)
 sprite_frames = SubResource("SpriteFrames_j5gcv")
+animation = &"normal punch"
 
 [node name="Colliders" type="Node2D" parent="CharacterBody2D"]
 
@@ -38,7 +66,7 @@ sprite_frames = SubResource("SpriteFrames_j5gcv")
 
 [node name="Right Hand" type="Area2D" parent="CharacterBody2D/Colliders/Hand Collider"]
 
-[node name="Right Hand Collision" type="CollisionShape2D" parent="CharacterBody2D/Colliders/Hand Collider/Right Hand"]
+[node name="Right Hand Collision" type="CollisionShape2D" parent="CharacterBody2D/Colliders/Hand Collider/Right Hand" groups=["P1 Hand Feet Collider"]]
 
 [node name="Foot Collider" type="Node2D" parent="CharacterBody2D/Colliders"]
 
