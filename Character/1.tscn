@@ -1,126 +1,43 @@
-[gd_scene load_steps=14 format=3 uid="uid://dj66hbghsx3ks"]
+[gd_scene load_steps=7 format=3 uid="uid://dj66hbghsx3ks"]
 
+[ext_resource type="Script" uid="uid://6oopute5k0xd" path="res://Character/Player-Movement.gd" id="1_g83ow"]
 [ext_resource type="Texture2D" uid="uid://c6onrfow7qv1p" path="res://icon.svg" id="2_bnkdj"]
-[ext_resource type="Texture2D" uid="uid://yvm1lrk7fm5h" path="res://Sprites/Temporary/Upper Cut.png" id="3_oedjp"]
-[ext_resource type="Texture2D" uid="uid://e5m8fdeogbaf" path="res://Sprites/Temporary/kick.png" id="4_g83ow"]
-[ext_resource type="Texture2D" uid="uid://c71df2imdmelj" path="res://Sprites/Temporary/punch.png" id="5_kxaqx"]
-[ext_resource type="Texture2D" uid="uid://071dko2olu2n" path="res://Sprites/Temporary/walk.png" id="6_g83ow"]
-[ext_resource type="Script" uid="uid://hsmfmg80kir" path="res://Character/colliders.gd" id="7_hpyvb"]
+[ext_resource type="Texture2D" uid="uid://b181scq6csym" path="res://Scener/cat being eaten by fish.jpg" id="2_pf467"]
+[ext_resource type="Script" uid="uid://yaklwe4x0kj8" path="res://Script/state machine.gd" id="4_pf467"]
 
-[sub_resource type="GDScript" id="GDScript_g83ow"]
-script/source = "extends CharacterBody2D
-
-var p1FightColl = []
-var disableColl = true
-"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oedjp"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_j5gcv"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_oedjp"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pf467")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_bnkdj")
 }],
 "loop": true,
-"name": &"Idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_g83ow")
-}],
-"loop": true,
-"name": &"Kick",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_kxaqx")
-}],
-"loop": true,
-"name": &"Punch",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_oedjp")
-}],
-"loop": true,
-"name": &"Upper Cut",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_g83ow")
-}],
-"loop": true,
-"name": &"Walk",
+"name": &"idle",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g83ow"]
+size = Vector2(127, 129)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxaqx"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_g83ow")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpyvb"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_oedjp")
+animation = &"idle"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8oo57"]
-
-[node name="Node" type="Node"]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-script = SubResource("GDScript_g83ow")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(63, 62)
-scale = Vector2(7, 7)
-shape = SubResource("RectangleShape2D_oedjp")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(63, 62)
-sprite_frames = SubResource("SpriteFrames_j5gcv")
-animation = &"Idle"
-
-[node name="Colliders" type="Node2D" parent="CharacterBody2D"]
-script = ExtResource("7_hpyvb")
-
-[node name="Hand Collider" type="Node2D" parent="CharacterBody2D/Colliders"]
-
-[node name="Left Hand" type="Area2D" parent="CharacterBody2D/Colliders/Hand Collider" groups=["P1 Hand Feet Collider"]]
-
-[node name="Left Hand Collision" type="CollisionShape2D" parent="CharacterBody2D/Colliders/Hand Collider/Left Hand" groups=["P1 Hand Feet Collider"]]
-position = Vector2(10, 38)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1.5)
 shape = SubResource("RectangleShape2D_g83ow")
-debug_color = Color(0.641366, 0.524208, 0, 0.42)
 
-[node name="Right Hand" type="Area2D" parent="CharacterBody2D/Colliders/Hand Collider"]
-
-[node name="Right Hand Collision" type="CollisionShape2D" parent="CharacterBody2D/Colliders/Hand Collider/Right Hand" groups=["P1 Hand Feet Collider"]]
-position = Vector2(110, 37)
-shape = SubResource("RectangleShape2D_kxaqx")
-debug_color = Color(0.977853, 0.148679, 1.92523e-07, 0.42)
-
-[node name="Foot Collider" type="Node2D" parent="CharacterBody2D/Colliders"]
-position = Vector2(-1, 1)
-
-[node name="Left Foot" type="Area2D" parent="CharacterBody2D/Colliders/Foot Collider"]
-position = Vector2(50, 151)
-
-[node name="Left Foot Collision" type="CollisionShape2D" parent="CharacterBody2D/Colliders/Foot Collider/Left Foot" groups=["P1 Hand Feet Collider"]]
-position = Vector2(-39, -28)
-shape = SubResource("RectangleShape2D_hpyvb")
-debug_color = Color(3.27289e-06, 0.640975, 0.341627, 0.42)
-
-[node name="Right Foot" type="Area2D" parent="CharacterBody2D/Colliders/Foot Collider"]
-position = Vector2(-37, 77)
-
-[node name="Right Foot Collision" type="CollisionShape2D" parent="CharacterBody2D/Colliders/Foot Collider/Right Foot" groups=["P1 Hand Feet Collider"]]
-position = Vector2(152, 45)
-shape = SubResource("RectangleShape2D_8oo57")
-debug_color = Color(0.643466, 0.334695, 1, 0.42)
-
-[connection signal="body_entered" from="CharacterBody2D/Colliders/Hand Collider/Left Hand" to="CharacterBody2D/Colliders" method="_on_left_hand_body_entered"]
-[connection signal="body_entered" from="CharacterBody2D/Colliders/Hand Collider/Right Hand" to="CharacterBody2D/Colliders" method="_on_right_hand_body_entered"]
-[connection signal="body_entered" from="CharacterBody2D/Colliders/Foot Collider/Left Foot" to="CharacterBody2D/Colliders" method="_on_left_foot_body_entered"]
-[connection signal="body_entered" from="CharacterBody2D/Colliders/Foot Collider/Right Foot" to="CharacterBody2D/Colliders" method="_on_right_foot_body_entered"]
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource("4_pf467")
+metadata/_custom_type_script = "uid://yaklwe4x0kj8"

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="fighting spel"
-run/main_scene="uid://dj66hbghsx3ks"
+run/main_scene="uid://cuojwadspstlr"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -55,7 +55,9 @@ ui_punch={
 
 [layer_names]
 
+2d_physics/layer_1="World"
 3d_physics/layer_1="World "
+2d_physics/layer_2="Player"
 3d_physics/layer_2="Player"
 
 [rendering]
