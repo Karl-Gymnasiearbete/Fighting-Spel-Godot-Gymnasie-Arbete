@@ -2,7 +2,11 @@
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [ext_resource type="Script" uid="uid://da0s87m8nulmj" path="res://Player-Movement.gd" id="1_g83ow"]
+=======
+[ext_resource type="Script" uid="uid://6oopute5k0xd" path="res://Player-Movement.gd" id="1_g83ow"]
+>>>>>>> Stashed changes
 =======
 [ext_resource type="Script" uid="uid://6oopute5k0xd" path="res://Player-Movement.gd" id="1_g83ow"]
 >>>>>>> Stashed changes

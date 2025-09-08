@@ -12,7 +12,11 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
+=======
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+>>>>>>> Stashed changes
 =======
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 >>>>>>> Stashed changes
@@ -21,7 +25,11 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	var direction := Input.get_axis("Left", "Right")
+=======
+	var direction := Input.get_axis("ui_left", "ui_right")
+>>>>>>> Stashed changes
 =======
 	var direction := Input.get_axis("ui_left", "ui_right")
 >>>>>>> Stashed changes
